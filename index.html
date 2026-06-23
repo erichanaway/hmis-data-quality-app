@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HMIS-data-quality-app</title>
+  </head>
+  <body>
+
+    <h1>HMIS Data Quality App</h1>
+
+    <section>
+      <h2>Upload Report</h2>
+      <input type="file">
+    </section>
+
+    <section>
+      <h2>Flag Summary</h2>
+
+      <div class="kpi-container">
+
+        <div class="kpi-card">
+          <h3>Total Flags</h3>
+          <p>42</p>
+        </div>
+
+        <div class="kpi-card">
+          <h3>High Severity</h3>
+          <p>12</p>
+        </div>
+
+        <div class="kpi-card">
+          <h3>Medium Severity</h3>
+          <p>20</p>
+        </div>
+
+        <div class="kpi-card">
+          <h3>Low Severity</h3>
+          <p>10</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Flag Details</h2>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Client ID</th>
+            <th>Flag</th>
+            <th>Severity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>12345</td>
+            <td>Missing Date of Birth</td>
+            <td>High</td>
+            <td>Open</td>
+          </tr>
+
+          <tr>
+            <td>67890</td>
+            <td>Missing Prior Living Situation</td>
+            <td>Medium</td>
+            <td>Open</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+
+  </body>
+</html>
