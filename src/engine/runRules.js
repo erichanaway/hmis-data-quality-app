@@ -1,7 +1,7 @@
-import { rules } from "../rules/rulesLibrary.js";
+import { rules } from "../rules/ruleLibrary.js";
 
 export function runRules(rows) {
-    const flags ={};
+    const flags =[];
 
     rows.forEach((row) => {
         rules.forEach((rule) => {
@@ -9,9 +9,10 @@ export function runRules(rows) {
                 flags.push({
                     clientID:row.clientID,
                     intakeID: row.intakeID,
-                    row: row,
+                    row,
+                    rule,
 
-                    ruleIDL ruleid,
+                    ruleID: rule.id,
                     category: rule.category,
                     severity: rule.severity,
                     description: rule.description,
@@ -24,4 +25,6 @@ export function runRules(rows) {
             }
         });
     });
+
+    return flags;
 }

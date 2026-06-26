@@ -4,16 +4,29 @@ export const rules = [
 
         category: "Project",
 
-        description: "Missing project type",
+        description: "Invalid Project Type",
 
         severity: "Error",
 
+        reference: "For Future Use",
+
+        message:
+            "Project Type must be a valid HMIS project type.",
+
+        resolution:
+            "Open the Project Information screen and select a valid Project Type.",
+
         check(row) {
-            return (
-                row.projectType === null ||
-                row.projectType === undefined ||
-                row.projectType === ""
-            );
+            const validProjectTypes = [
+                "ES",
+                "TH",
+                "RR",
+                "HP",
+                "Street Outreach",
+                "Services Only"
+            ];
+
+            return !validProjectTypes.includes(row.projectType);
         }
     }
 ];
