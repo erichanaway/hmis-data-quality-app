@@ -1,5 +1,6 @@
 import './style.css';
 import * as XLSX from 'xlsx';
+import { mapBellDataRow } from "./mappers/bellDataMapper.js";
 
 const fileInput = document.querySelector('input[type="file"]');
 
@@ -27,14 +28,16 @@ function handleFile(event) {
             const rows =
                 XLSX.utils.sheet_to_json(sheet);
 
+            const mappedRows = rows.map(mapBellDataRow);
+
+            console.log("Original Bell Data:");
             console.table(rows);
             
-            console.table(rows[0]);
-
-            console.log(rows[0].Severity);
+            console.log("Mapped Rows:");
+            console.table(mappedRows);
 
             console.log(
-                `Loaded ${rows.length} rows`
+                `Loaded ${mappedRows.length} rows`
             );
     };
 
