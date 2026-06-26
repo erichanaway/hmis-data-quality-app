@@ -2,8 +2,10 @@ import './style.css';
 import * as XLSX from 'xlsx';
 import { mapBellDataRow } from "./mappers/bellDataMapper.js";
 import { runRules } from "./engine/runRules.js";
+import { rules } from "./rules/ruleLibrary.js";
 
 const fileInput = document.querySelector('input[type="file"]');
+
 
 fileInput.addEventListener('change', handleFile);
 
@@ -32,6 +34,21 @@ function handleFile(event) {
             const mappedRows = rows.map(mapBellDataRow);
 
             const flags = runRules(mappedRows);
+
+            document.querySelector("#rows-checked").textContent =
+                mappedRows.length;
+            
+            document.querySelector("#flags-found").textContent =
+                flags.length;
+
+            document.querySelector("#errors-found").textContent =
+                flags.filter((flag) => flag.severity === "Error").length;
+
+            document.querySelector("#warnings-found").textContent =
+                flags.filter((flag) => flag.severity === "Warning").length;
+            
+            document.querySelector("#rules-loaded").textContent =
+                rules.length;
 
             console.log(
                 "Blank project types:",
