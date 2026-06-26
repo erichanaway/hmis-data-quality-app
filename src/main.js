@@ -50,6 +50,25 @@ function handleFile(event) {
             document.querySelector("#rules-loaded").textContent =
                 rules.length;
 
+            // Flag Details
+
+            const tableBody = document.querySelector("#flags-table-body");
+
+                tableBody.innerHTML = "";
+
+                flags.forEach((flag) => {
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${flag.clientID}</td>
+                        <td>${flag.description}</td>
+                        <td>${flag.severity}</td>
+                        <td>${flag.status}</td>
+                    `;
+
+                    tableBody.appendChild(row);
+                });
+
             console.log(
                 "Blank project types:",
                 mappedRows.filter((row) => row.projectType === "")
