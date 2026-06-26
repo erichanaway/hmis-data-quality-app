@@ -60,9 +60,14 @@ function handleFile(event) {
                     const row = document.createElement("tr");
 
                     row.innerHTML = `
+                        <td>${flag.excelRow}</td>
                         <td>${flag.clientID}</td>
-                        <td>${flag.description}</td>
+                        <td>${flag.intakeID}</td>
+                        <td>${flag.agency}</td>
+                        <td>${flag.user}</td>
+                        <td>${flag.ruleID}</td>
                         <td>${flag.severity}</td>
+                        <td>${flag.description}</td>
                         <td>${flag.status}</td>
                     `;
 
