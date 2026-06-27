@@ -35,3 +35,16 @@ td {
   border-bottom: 1px solid #ddd;
   text-align: left;
 }
+
+.footer {
+  margin-top: 60px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #6b7280;
+  border-top: 1px solid #d1d5db;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 6px 0;
+}
