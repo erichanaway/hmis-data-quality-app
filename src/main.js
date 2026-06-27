@@ -31,9 +31,26 @@ function handleFile(event) {
             const rows =
                 XLSX.utils.sheet_to_json(sheet);
 
-            const mappedRows = rows.map(mapBellDataRow);
+            const mappedRows = rows.map((row) => {
+                const mappedRow = mapBellDataRow(row);
+
+                mappedRow.excelRow = row.__rowNum__ + 1;
+
+                return mappedRow;
+            });
+
+            // Temporary
+            console.log("First mapped row:");
+            console.log(mappedRows[0]);
 
             const flags = runRules(mappedRows);
+
+            // Temporary
+            console.log("First flag:");
+            console.log(flags[0].agency);
+            console.log(flags[0].user);
+            console.log(flags[0].row.agency);
+            console.log(flags[0].row.user);
 
             document.querySelector("#rows-checked").textContent =
                 mappedRows.length;
@@ -60,11 +77,11 @@ function handleFile(event) {
                     const row = document.createElement("tr");
 
                     row.innerHTML = `
-                        <td>${flag.excelRow}</td>
+                        <td>${flag.row.excelRow ?? flag.excelRow}</td>
                         <td>${flag.clientID}</td>
                         <td>${flag.intakeID}</td>
-                        <td>${flag.agency}</td>
-                        <td>${flag.user}</td>
+                        <td>${flag.row.agency}</td>
+                        <td>${flag.row.user}</td>
                         <td>${flag.ruleID}</td>
                         <td>${flag.severity}</td>
                         <td>${flag.description}</td>
