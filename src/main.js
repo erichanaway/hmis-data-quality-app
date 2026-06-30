@@ -1,7 +1,8 @@
 import './style.css';
 import * as XLSX from 'xlsx';
 import { mapBellDataRow } from "./mappers/bellDataMapper.js";
-import { runRules } from "./engine/runRules.js";
+import { runRowRules } from "./engine/runRowRules.js";
+import { runGroupRules } from "./engine/runGroupRules.js";
 import { rules } from "./rules/ruleLibrary.js";
 
 const fileInput = document.querySelector('input[type="file"]');
@@ -43,8 +44,15 @@ function handleFile(event) {
             console.log("First mapped row:");
             console.log(mappedRows[0]);
 
-            const flags = runRules(mappedRows);
+            const rowFlags = runRowRules(mappedRows);
 
+            const groupFlags = runGroupRules(mappedRows);
+
+            const flags = [
+                ...rowFlags,
+                ...groupFlags
+            ];
+            
             // Temporary
             console.log("First flag:");
             console.log(flags[0].agency);

@@ -19,6 +19,6 @@ export function mapBellDataRow(row) {
     clientEntersStartDate: row["Client Enters Project Start Date"],
     clientExitsStopDate: row["Client Exits Project Stop Date"],
     headOfHousehold: row["Head of Household"],
-    user: row['User']
+    user: row["User"]
   };
 }

@@ -1,14 +1,20 @@
 import { rules } from "../rules/ruleLibrary.js";
 
-export function runRules(rows) {
-    const flags =[];
+export function runRowRules(rows) {
+    const flags = [];
 
-    rows.forEach((row) => {
+    rows.forEach((row, index) => {
         rules.forEach((rule) => {
+            if (rule.engine !== "row") return;
             if (rule.check(row)) {
                 flags.push({
-                    clientID:row.clientID,
+                    excelRow: index + 2,
+
+                    clientID: row.clientID,
                     intakeID: row.intakeID,
+                    agency: row.agency,
+                    user: row.user,
+
                     row,
                     rule,
 
